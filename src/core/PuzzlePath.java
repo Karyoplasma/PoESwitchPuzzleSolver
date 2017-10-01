@@ -1,11 +1,11 @@
 package core;
 
-public class PuzzlePath {
-	public int gscore;
-	public SwitchPuzzle configuration;
-	public PuzzlePath neighbor;
-	public int pedestal;
-	
+public class PuzzlePath implements Comparable<PuzzlePath>{
+	private int gscore;
+	private SwitchPuzzle configuration;
+	private PuzzlePath neighbor;
+	private int pedestal;
+
 	public PuzzlePath(SwitchPuzzle configuration, int gscore, int pedestal, PuzzlePath neighbor) {
 		this.neighbor = neighbor;
 		this.gscore = gscore;
@@ -17,13 +17,30 @@ public class PuzzlePath {
 		return this.configuration.size();
 	}
 	
-	public int gScore() {
-		return this.gscore;
-	}
-	
 	public boolean isGoal() {
 		return configuration.isGoal();
 	}
+	
+	public int getGscore() {
+		return this.gscore;
+	}
+
+	public SwitchPuzzle getConfiguration() {
+		return this.configuration;
+	}
+
+	public PuzzlePath getNeighbor() {
+		return this.neighbor;
+	}
+
+	public int getPedestal() {
+		return this.pedestal;
+	}
+
+	public void setNeighbor(PuzzlePath neighbor) {
+		this.neighbor = neighbor;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuffer ret = new StringBuffer();
@@ -31,5 +48,26 @@ public class PuzzlePath {
 		ret.append(")");
 		return ret.toString();
 	}
+	
+	@Override
+	public boolean equals(Object p) {
+		if (p instanceof PuzzlePath) {
+			return this.toString().equals(p.toString());
+		}
+		return false;
+		
+	}
 
+	@Override
+	public int compareTo(PuzzlePath o) {
+		if (this.getGscore() == o.getGscore()) {
+			return 0;
+		} else {
+			if (this.getGscore() > o.getGscore()) {
+				return 1;
+			} else {
+				return -1;
+			}
+		}
+	}
 }

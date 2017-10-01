@@ -139,84 +139,69 @@ public class SwitchPuzzleSolverGUI implements ActionListener {
 		puzzle.setConfiguration(configuration);
 	}
 	
-	private void visualizeFloorPuzzle(SwitchPuzzle puzzle) {
-		for (int i = 0; i < puzzle.size(); i++) {
-			pedestals.get(i).setSelected(puzzle.configuration[i]);
-		}
-	}
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == checkBox_p1) {
 			if (!testMode) {
 				return;
 			}
-			getFloorPuzzleFromGUI();
-			puzzle.configuration[0] = !puzzle.configuration[0];
-			visualizeFloorPuzzle(puzzle.pressPedestal(0));
-			return;
+			checkBox_p8.setSelected(!checkBox_p8.isSelected());
+			checkBox_p2.setSelected(!checkBox_p2.isSelected());
 		}
 		if (e.getSource() == checkBox_p2) {
 			if (!testMode) {
 				return;
 			}
-			getFloorPuzzleFromGUI();
-			puzzle.configuration[1] = !puzzle.configuration[1];
-			visualizeFloorPuzzle(puzzle.pressPedestal(1));
+			checkBox_p1.setSelected(!checkBox_p1.isSelected());
+			checkBox_p3.setSelected(!checkBox_p3.isSelected());
 			return;
 		}
 		if (e.getSource() == checkBox_p3) {
 			if (!testMode) {
 				return;
 			}
-			getFloorPuzzleFromGUI();
-			puzzle.configuration[2] = !puzzle.configuration[2];
-			visualizeFloorPuzzle(puzzle.pressPedestal(2));
+			checkBox_p2.setSelected(!checkBox_p2.isSelected());
+			checkBox_p4.setSelected(!checkBox_p4.isSelected());
 			return;
 		}
 		if (e.getSource() == checkBox_p4) {
 			if (!testMode) {
 				return;
 			}
-			getFloorPuzzleFromGUI();
-			puzzle.configuration[3] = !puzzle.configuration[3];
-			visualizeFloorPuzzle(puzzle.pressPedestal(3));
+			checkBox_p3.setSelected(!checkBox_p3.isSelected());
+			checkBox_p5.setSelected(!checkBox_p5.isSelected());
 			return;
 		}
 		if (e.getSource() == checkBox_p5) {
 			if (!testMode) {
 				return;
 			}
-			getFloorPuzzleFromGUI();
-			puzzle.configuration[4] = !puzzle.configuration[4];
-			visualizeFloorPuzzle(puzzle.pressPedestal(4));
+			checkBox_p4.setSelected(!checkBox_p4.isSelected());
+			checkBox_p6.setSelected(!checkBox_p6.isSelected());
 			return;
 		}
 		if (e.getSource() == checkBox_p6) {
 			if (!testMode) {
 				return;
 			}
-			getFloorPuzzleFromGUI();
-			puzzle.configuration[5] = !puzzle.configuration[5];
-			visualizeFloorPuzzle(puzzle.pressPedestal(5));
+			checkBox_p5.setSelected(!checkBox_p5.isSelected());
+			checkBox_p7.setSelected(!checkBox_p7.isSelected());
 			return;
 		}
 		if (e.getSource() == checkBox_p7) {
 			if (!testMode) {
 				return;
 			}
-			getFloorPuzzleFromGUI();
-			puzzle.configuration[6] = !puzzle.configuration[6];
-			visualizeFloorPuzzle(puzzle.pressPedestal(6));
+			checkBox_p6.setSelected(!checkBox_p6.isSelected());
+			checkBox_p8.setSelected(!checkBox_p8.isSelected());
 			return;
 		}
 		if (e.getSource() == checkBox_p8) {
 			if (!testMode) {
 				return;
 			}
-			getFloorPuzzleFromGUI();
-			puzzle.configuration[7] = !puzzle.configuration[7];
-			visualizeFloorPuzzle(puzzle.pressPedestal(7));
+			checkBox_p1.setSelected(!checkBox_p1.isSelected());
+			checkBox_p7.setSelected(!checkBox_p7.isSelected());
 			return;
 		}
 		if (e.getSource() == btnSolve) {

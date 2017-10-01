@@ -1,7 +1,7 @@
 package core;
 
 public class SwitchPuzzle {
-	boolean[] configuration;
+	private boolean[] configuration;
 	
 	public SwitchPuzzle(boolean[] configuration) {
 		this.configuration = configuration;
@@ -36,15 +36,22 @@ public class SwitchPuzzle {
 	public void setConfiguration(boolean[] configuration) {
 		this.configuration = configuration;
 	}
+	
 	public int size() {
 		return this.configuration.length;
 	}
+	
 	private int modulo(int a, int b) {
 		if ((a % b)<0) {
 			return a+b;
 		}
 		return a%b;
 	}
+	
+	public boolean[] getConfiguration() {
+		return this.configuration;
+	}
+
 	@Override
 	public String toString(){
 		StringBuffer ret = new StringBuffer();
