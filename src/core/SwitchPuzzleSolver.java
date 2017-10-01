@@ -1,7 +1,6 @@
 package core;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -17,14 +16,13 @@ public class SwitchPuzzleSolver {
 	public List<Integer> solve() {
 		HashSet<PuzzlePath> closed = new HashSet<PuzzlePath>();
 		HashSet<PuzzlePath> open = new HashSet<PuzzlePath>();
-		HashMap<PuzzlePath, Integer> cameFrom = new HashMap<PuzzlePath, Integer>();
 		open.add(new PuzzlePath(startConfiguration, 0, 0, null));
 		while (!open.isEmpty()) {
 			PuzzlePath current = this.getLowestScore(open);
 			if (current.isGoal()) {
 				closed.clear();
 				open.clear();
-				return reconstruct_path(cameFrom, current, current.pedestal);
+				return reconstruct_path(current, current.pedestal);
 			}
 			open.remove(current);
 			closed.add(current);
@@ -35,7 +33,6 @@ public class SwitchPuzzleSolver {
 				if (!this.isInSet(p, open)) {
 					open.add(p);
 				}
-				cameFrom.put(current, p.pedestal);
 			}
 			
 		}
@@ -50,13 +47,12 @@ public class SwitchPuzzleSolver {
 		}
 		return false;
 	}
-	private List<Integer> reconstruct_path(HashMap<PuzzlePath, Integer> cameFrom, PuzzlePath current, int pedestal) {
+	private List<Integer> reconstruct_path(PuzzlePath current, int pedestal) {
 		List<Integer> totalPath = new ArrayList<Integer>();
 		while(!(current.pedestal == 0)) {
 			totalPath.add(current.pedestal);
 			current = current.neighbor;
 		}
-		cameFrom.clear();
 		return totalPath;
 	}
 	
